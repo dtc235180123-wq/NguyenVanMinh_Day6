@@ -1,0 +1,57 @@
+﻿@model IEnumerable<NguyenVanMinh_Day6.Models.Genre>
+
+@{
+    ViewData["Title"] = "Danh sách Thể loại";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        <div class="card card-modern p-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h3 class="fw-bold text-dark mb-0"><i class="bi bi-tags-fill text-success me-2"></i>Danh sách Thể loại</h3>
+                    <p class="text-muted small mb-0">Quản lý danh mục thể loại phim</p>
+                </div>
+                <a asp-action="Create" class="btn btn-success px-4 py-2 rounded-pill shadow-sm">
+                    <i class="bi bi-plus-circle me-1"></i> Thêm mới
+                </a>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead>
+                        <tr>
+                            <th style="width: 15%;">Mã ID</th>
+                            <th>@Html.DisplayNameFor(model => model.Name)</th>
+                            <th class="text-end">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="text-muted fw-bold">#@item.Id</td>
+                                <td>
+                                    <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 px-3 py-2 fs-6">
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </span>
+                                </td>
+                                <td class="text-end">
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning text-dark fw-semibold me-1">
+                                        <i class="bi bi-pencil-square"></i> Sửa
+                                    </a>
+                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info text-white fw-semibold me-1">
+                                        <i class="bi bi-eye"></i> Chi tiết
+                                    </a>
+                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger fw-semibold">
+                                        <i class="bi bi-trash"></i> Xóa
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
